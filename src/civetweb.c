@@ -14413,7 +14413,7 @@ parse_port_string(const struct vec *vec, struct socket *so, int *ip_version)
 
 	} else if (is_valid_port(port = strtoul(vec->ptr, &endptr, 0))
 	           && vec->ptr != endptr) {
-		len = endptr - vec->ptr;
+		len = (int)(endptr - vec->ptr);
 		/* If only port is specified, bind to IPv4, INADDR_ANY */
 		so->lsa.sin.sin_port = htons((uint16_t)port);
 		*ip_version = 4;
